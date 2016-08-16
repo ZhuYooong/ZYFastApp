@@ -1,0 +1,8 @@
+github "Alamofire/Alamofire"
+github "onevcat/Kingfisher"
+github "SnapKit/SnapKit"
+github "boyXiong/XWSwiftRefresh"
+github "artman/HexColor"
+github "realm/realm-cocoa"
+github "pkluz/PKHUD"
+github "SwiftyJSON/SwiftyJSON"
