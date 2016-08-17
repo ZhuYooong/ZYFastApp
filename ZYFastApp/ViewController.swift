@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     //MARK: - 初始化界面
     func initItem() {
         creatDefultFirstScrollView()
+        firstTableView.tableFooterView = UIView()
     }
     //MARK: ViewPager 页面
     var advertisementDefultImageView = UIImageView(image: UIImage(named: "first_defult_banner"))

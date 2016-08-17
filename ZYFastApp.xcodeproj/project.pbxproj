@@ -27,6 +27,9 @@
 		044CE2611D5DB1A10032D2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044CE25F1D5DB1A10032D2E4 /* LaunchScreen.storyboard */; };
 		044CE26C1D5DB1A30032D2E4 /* ZYFastAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CE26B1D5DB1A30032D2E4 /* ZYFastAppTests.swift */; };
 		044CE2771D5DB1A40032D2E4 /* ZYFastAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CE2761D5DB1A40032D2E4 /* ZYFastAppUITests.swift */; };
+		0485D0FB1D641038004E0CE3 /* AsyncDisplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0485D0FA1D641038004E0CE3 /* AsyncDisplayKit.framework */; };
+		0485D0FD1D6413D4004E0CE3 /* HotNewsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485D0FC1D6413D4004E0CE3 /* HotNewsInfo.swift */; };
+		0485D1021D6418B0004E0CE3 /* ZYSecondCollectionViewCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0485D1011D6418B0004E0CE3 /* ZYSecondCollectionViewCellNode.swift */; };
 		049185C81D62DAB200DDEFBE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049185C71D62DAB200DDEFBE /* SwiftyJSON.framework */; };
 		04BCEB1B1D630C4A00C2CC20 /* ZYFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BCEB1A1D630C4A00C2CC20 /* ZYFirstTableViewCell.swift */; };
 		04BCEB1D1D630FEB00C2CC20 /* ZYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BCEB1C1D630FEB00C2CC20 /* ZYWebViewController.swift */; };
@@ -80,6 +83,9 @@
 		044CE2721D5DB1A40032D2E4 /* ZYFastAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZYFastAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		044CE2761D5DB1A40032D2E4 /* ZYFastAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZYFastAppUITests.swift; sourceTree = "<group>"; };
 		044CE2781D5DB1A40032D2E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0485D0FA1D641038004E0CE3 /* AsyncDisplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncDisplayKit.framework; path = ../Carthage/Build/iOS/AsyncDisplayKit.framework; sourceTree = "<group>"; };
+		0485D0FC1D6413D4004E0CE3 /* HotNewsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotNewsInfo.swift; sourceTree = "<group>"; };
+		0485D1011D6418B0004E0CE3 /* ZYSecondCollectionViewCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYSecondCollectionViewCellNode.swift; sourceTree = "<group>"; };
 		049185C71D62DAB200DDEFBE /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		04BCEB1A1D630C4A00C2CC20 /* ZYFirstTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYFirstTableViewCell.swift; sourceTree = "<group>"; };
 		04BCEB1C1D630FEB00C2CC20 /* ZYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYWebViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0485D0FB1D641038004E0CE3 /* AsyncDisplayKit.framework in Frameworks */,
 				049185C81D62DAB200DDEFBE /* SwiftyJSON.framework in Frameworks */,
 				040DE3D41D61A170001EAF88 /* PKHUD.framework in Frameworks */,
 				040DE3B51D6157E5001EAF88 /* Alamofire.framework in Frameworks */,
@@ -134,6 +141,7 @@
 		040DE3BD1D6168FA001EAF88 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				0485D0FA1D641038004E0CE3 /* AsyncDisplayKit.framework */,
 				040DE3C71D61718D001EAF88 /* UINavigationController+FDFullscreenPopGesture.h */,
 				040DE3C81D61718D001EAF88 /* UINavigationController+FDFullscreenPopGesture.m */,
 				040DE3C91D61718D001EAF88 /* UIScrollView+EmptyDataSet.h */,
@@ -154,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				04DAEE061D61B9AE00CF47F2 /* LatestNewsInfo.swift */,
+				0485D0FC1D6413D4004E0CE3 /* HotNewsInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -169,10 +178,9 @@
 		040DE3C31D6169E1001EAF88 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				044CE2581D5DB1A10032D2E4 /* ViewController.swift */,
-				04BCEB1A1D630C4A00C2CC20 /* ZYFirstTableViewCell.swift */,
-				040DE3D51D61A51A001EAF88 /* ZYSecondRootViewController.swift */,
-				040DE3D71D61A531001EAF88 /* ZYThirdRootViewController.swift */,
+				0485D0FE1D641423004E0CE3 /* First */,
+				0485D0FF1D64142B004E0CE3 /* Second */,
+				0485D1001D641432004E0CE3 /* Third */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -236,6 +244,32 @@
 				044CE2781D5DB1A40032D2E4 /* Info.plist */,
 			);
 			path = ZYFastAppUITests;
+			sourceTree = "<group>";
+		};
+		0485D0FE1D641423004E0CE3 /* First */ = {
+			isa = PBXGroup;
+			children = (
+				044CE2581D5DB1A10032D2E4 /* ViewController.swift */,
+				04BCEB1A1D630C4A00C2CC20 /* ZYFirstTableViewCell.swift */,
+			);
+			name = First;
+			sourceTree = "<group>";
+		};
+		0485D0FF1D64142B004E0CE3 /* Second */ = {
+			isa = PBXGroup;
+			children = (
+				040DE3D51D61A51A001EAF88 /* ZYSecondRootViewController.swift */,
+				0485D1011D6418B0004E0CE3 /* ZYSecondCollectionViewCellNode.swift */,
+			);
+			name = Second;
+			sourceTree = "<group>";
+		};
+		0485D1001D641432004E0CE3 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				040DE3D71D61A531001EAF88 /* ZYThirdRootViewController.swift */,
+			);
+			name = Third;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +414,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PKHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AsyncDisplayKit.framework",
 			);
 			outputPaths = (
 			);
@@ -400,8 +435,10 @@
 				040DE3CB1D61718D001EAF88 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				04BCEB1B1D630C4A00C2CC20 /* ZYFirstTableViewCell.swift in Sources */,
 				040DE3D61D61A51A001EAF88 /* ZYSecondRootViewController.swift in Sources */,
+				0485D1021D6418B0004E0CE3 /* ZYSecondCollectionViewCellNode.swift in Sources */,
 				040DE3D81D61A531001EAF88 /* ZYThirdRootViewController.swift in Sources */,
 				044CE2591D5DB1A10032D2E4 /* ViewController.swift in Sources */,
+				0485D0FD1D6413D4004E0CE3 /* HotNewsInfo.swift in Sources */,
 				040DE3CC1D61718D001EAF88 /* UIScrollView+EmptyDataSet.m in Sources */,
 				044CE2571D5DB1A10032D2E4 /* AppDelegate.swift in Sources */,
 				040DE3D01D6190D9001EAF88 /* NetDataManager.swift in Sources */,
