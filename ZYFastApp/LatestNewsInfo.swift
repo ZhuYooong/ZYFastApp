@@ -12,4 +12,8 @@ class LatestNewsInfo: RLMObject {
     dynamic var id: String? = ""
     dynamic var title: String? = ""
     dynamic var images: String? = ""
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }

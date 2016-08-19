@@ -13,4 +13,8 @@ class HotNewsInfo: RLMObject {
     dynamic var url: String? = ""
     dynamic var thumbnail: String? = ""
     dynamic var title: String? = ""
+    
+    override class func primaryKey() -> String? {
+        return "news_id"
+    }
 }
