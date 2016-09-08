@@ -18,15 +18,16 @@ class NetDataManager: NSObject {
     let V2EXBaseURL = "http://news-at.zhihu.com/api"
     //get方法
     func GETRequest(URLString: URLStringConvertible, NetData: (data: NSData?)->Void) {
+        HUD.show(.LabeledProgress(title: "正在加载", subtitle: ""))
         Alamofire.request(.GET, URLString).responseJSON {
             response in
             switch response.result {
             case .Success:
                 NetData(data: response.data)
-                PKHUD.sharedHUD.hide(afterDelay: 0)
+                HUD.hide()
             case .Failure( _):
-                PKHUD.sharedHUD.contentView = PKHUDErrorView()
-                PKHUD.sharedHUD.hide(afterDelay: 1.0)
+                HUD.show(.LabeledError(title: "连接服务器失败", subtitle: ""))
+                HUD.hide()
             }
         }
     }

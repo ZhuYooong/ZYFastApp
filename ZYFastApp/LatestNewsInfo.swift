@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Realm
-class LatestNewsInfo: RLMObject {
+import RealmSwift
+class LatestNewsInfo: Object {
     dynamic var id: String? = ""
     dynamic var title: String? = ""
     dynamic var images: String? = ""

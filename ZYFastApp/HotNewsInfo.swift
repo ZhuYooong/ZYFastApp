@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Realm
-class HotNewsInfo: RLMObject {
+import RealmSwift
+class HotNewsInfo: Object {
     dynamic var news_id: String? = ""
     dynamic var url: String? = ""
     dynamic var thumbnail: String? = ""
