@@ -17,10 +17,6 @@ Pods
 DerivedData
 build
 
-docs/_site
-docs/htdocs
-docs/.sass-cache
-
 *.swp
 
 *.lock
@@ -28,3 +24,13 @@ docs/.sass-cache
 *.gcov
 *.gcno
 *.gcda
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Buck
+/buck-out
+/.buckconfig.local
+/.buckd
+

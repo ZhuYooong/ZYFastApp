@@ -10,14 +10,17 @@
 
 #import "ASStackPositionedLayout.h"
 
+#import <tgmath.h>
+
 #import "ASInternalHelpers.h"
 #import "ASLayoutSpecUtilities.h"
+#import "ASLayoutSpec+Subclasses.h"
 
 static CGFloat crossOffset(const ASStackLayoutSpecStyle &style,
-                           const ASStackUnpositionedItem &l,
+                           const ASStackLayoutSpecItem &l,
                            const CGFloat crossSize)
 {
-  switch (alignment(l.child.alignSelf, style.alignItems)) {
+  switch (alignment(l.child.style.alignSelf, style.alignItems)) {
     case ASStackLayoutAlignItemsEnd:
       return crossSize - crossDimension(style.direction, l.layout.size);
     case ASStackLayoutAlignItemsCenter:
@@ -36,20 +39,19 @@ static CGFloat crossOffset(const ASStackLayoutSpecStyle &style,
  * @param style The layout style of the overall stack layout
  * @param firstChildOffset Offset of the first child
  * @param extraSpacing Spacing between children, in addition to spacing set to the stack's layout style
- * @param lastChildOffset Offset of the last child
  * @param unpositionedLayout Unpositioned children of the stack
  * @param constrainedSize Constrained size of the stack
  */
 static ASStackPositionedLayout stackedLayout(const ASStackLayoutSpecStyle &style,
                                              const CGFloat firstChildOffset,
                                              const CGFloat extraSpacing,
-                                             const CGFloat lastChildOffset,
                                              const ASStackUnpositionedLayout &unpositionedLayout,
                                              const ASSizeRange &constrainedSize)
 {
+    
   // The cross dimension is the max of the childrens' cross dimensions (clamped to our constraint below).
   const auto it = std::max_element(unpositionedLayout.items.begin(), unpositionedLayout.items.end(),
-                                   [&](const ASStackUnpositionedItem &a, const ASStackUnpositionedItem &b){
+                                   [&](const ASStackLayoutSpecItem &a, const ASStackLayoutSpecItem &b){
                                      return compareCrossDimension(style.direction, a.layout.size, b.layout.size);
                                    });
   const auto largestChildCrossSize = it == unpositionedLayout.items.end() ? 0 : crossDimension(style.direction, it->layout.size);
@@ -59,30 +61,21 @@ static ASStackPositionedLayout stackedLayout(const ASStackLayoutSpecStyle &style
   
   CGPoint p = directionPoint(style.direction, firstChildOffset, 0);
   BOOL first = YES;
-  const auto lastChild = unpositionedLayout.items.back().child;
-  CGFloat offset = 0;
   
-  auto stackedChildren = AS::map(unpositionedLayout.items, [&](const ASStackUnpositionedItem &l) -> ASLayout *{
-    offset = (l.child == lastChild) ? lastChildOffset : 0;
-    p = p + directionPoint(style.direction, l.child.spacingBefore + offset, 0);
+  // Adjust the position of the unpositioned layouts to be positioned
+  const auto stackedChildren = unpositionedLayout.items;
+  for (const auto &l : stackedChildren) {
+    p = p + directionPoint(style.direction, l.child.style.spacingBefore, 0);
     if (!first) {
       p = p + directionPoint(style.direction, style.spacing + extraSpacing, 0);
     }
     first = NO;
     l.layout.position = p + directionPoint(style.direction, 0, crossOffset(style, l, crossSize));
     
-    p = p + directionPoint(style.direction, stackDimension(style.direction, l.layout.size) + l.child.spacingAfter, 0);
-    return l.layout;
-  });
-  return {stackedChildren, crossSize};
-}
+    p = p + directionPoint(style.direction, stackDimension(style.direction, l.layout.size) + l.child.style.spacingAfter, 0);
+  }
 
-static ASStackPositionedLayout stackedLayout(const ASStackLayoutSpecStyle &style,
-                                             const CGFloat firstChildOffset,
-                                             const ASStackUnpositionedLayout &unpositionedLayout,
-                                             const ASSizeRange &constrainedSize)
-{
-  return stackedLayout(style, firstChildOffset, 0, 0, unpositionedLayout, constrainedSize);
+  return {std::move(stackedChildren), crossSize};
 }
 
 ASStackPositionedLayout ASStackPositionedLayout::compute(const ASStackUnpositionedLayout &unpositionedLayout,
@@ -102,20 +95,24 @@ ASStackPositionedLayout ASStackPositionedLayout::compute(const ASStackUnposition
   }
   
   switch (justifyContent) {
-    case ASStackLayoutJustifyContentStart:
-      return stackedLayout(style, 0, unpositionedLayout, constrainedSize);
-    case ASStackLayoutJustifyContentCenter:
-      return stackedLayout(style, floorf(violation / 2), unpositionedLayout, constrainedSize);
-    case ASStackLayoutJustifyContentEnd:
-      return stackedLayout(style, violation, unpositionedLayout, constrainedSize);
+    case ASStackLayoutJustifyContentStart: {
+      return stackedLayout(style, 0, 0, unpositionedLayout, constrainedSize);
+    }
+    case ASStackLayoutJustifyContentCenter: {
+      return stackedLayout(style, std::floor(violation / 2), 0, unpositionedLayout, constrainedSize);
+    }
+    case ASStackLayoutJustifyContentEnd: {
+      return stackedLayout(style, violation, 0, unpositionedLayout, constrainedSize);
+    }
     case ASStackLayoutJustifyContentSpaceBetween: {
+      // Spacing between the items, no spaces at the edges, evenly distributed
       const auto numOfSpacings = numOfItems - 1;
-      return stackedLayout(style, 0, floorf(violation / numOfSpacings), fmodf(violation, numOfSpacings), unpositionedLayout, constrainedSize);
+      return stackedLayout(style, 0, violation / numOfSpacings, unpositionedLayout, constrainedSize);
     }
     case ASStackLayoutJustifyContentSpaceAround: {
       // Spacing between items are twice the spacing on the edges
-      CGFloat spacingUnit = floorf(violation / (numOfItems * 2));
-      return stackedLayout(style, spacingUnit, spacingUnit * 2, 0, unpositionedLayout, constrainedSize);
+      CGFloat spacingUnit = violation / (numOfItems * 2);
+      return stackedLayout(style, spacingUnit, spacingUnit * 2, unpositionedLayout, constrainedSize);
     }
   }
 }

@@ -12,10 +12,13 @@
 
 #import <UIKit/UIImage.h>
 #import <UIKit/UIBezierPath.h>
+#import <AsyncDisplayKit/ASBaseDefines.h>
+
+NS_ASSUME_NONNULL_BEGIN
 
 // High-performance flat-colored, rounded-corner resizable images
 //
-// For "Baked-in Opaque" corners, set cornerColor equal to the color behind the rounded image object, e.g. the background color.
+// For "Baked-in Opaque" corners, set cornerColor equal to the color behind the rounded image object, i.e. the background color.
 // For "Baked-in Alpha" corners, set cornerColor = [UIColor clearColor]
 //
 // See http://asyncdisplaykit.org/docs/corner-rounding.html for an explanation.
@@ -31,7 +34,7 @@
  */
 + (UIImage *)as_resizableRoundedImageWithCornerRadius:(CGFloat)cornerRadius
                                           cornerColor:(UIColor *)cornerColor
-                                            fillColor:(UIColor *)fillColor;
+                                            fillColor:(UIColor *)fillColor AS_WARN_UNUSED_RESULT;
 
 /**
  * This generates a flat-color, rounded-corner resizeable image with a border
@@ -45,8 +48,8 @@
 + (UIImage *)as_resizableRoundedImageWithCornerRadius:(CGFloat)cornerRadius
                                           cornerColor:(UIColor *)cornerColor
                                             fillColor:(UIColor *)fillColor
-                                          borderColor:(UIColor *)borderColor
-                                          borderWidth:(CGFloat)borderWidth;
+                                          borderColor:(nullable UIColor *)borderColor
+                                          borderWidth:(CGFloat)borderWidth AS_WARN_UNUSED_RESULT;
 
 /**
  * This generates a flat-color, rounded-corner resizeable image with a border
@@ -62,10 +65,32 @@
 + (UIImage *)as_resizableRoundedImageWithCornerRadius:(CGFloat)cornerRadius
                                           cornerColor:(UIColor *)cornerColor
                                             fillColor:(UIColor *)fillColor
-                                          borderColor:(UIColor *)borderColor
+                                          borderColor:(nullable UIColor *)borderColor
                                           borderWidth:(CGFloat)borderWidth
                                        roundedCorners:(UIRectCorner)roundedCorners
-                                                scale:(CGFloat)scale;
+                                                scale:(CGFloat)scale AS_WARN_UNUSED_RESULT;
+
+/**
+ *  A version of imageNamed that caches results because loading an image is expensive.
+ *  Calling with the same name value will usually return the same object.  A UIImage,
+ *  after creation, is immutable and thread-safe so it's fine to share these objects across multiple threads.
+ *
+ *  @param imageName The name of the image to load
+ *  @return The loaded image or nil
+ */
++ (UIImage *)as_imageNamed:(NSString *)imageName;
+
+/**
+ *  A version of imageNamed that caches results because loading an image is expensive.
+ *  Calling with the same name value will usually return the same object.  A UIImage,
+ *  after creation, is immutable and thread-safe so it's fine to share these objects across multiple threads.
+ *
+ *  @param imageName The name of the image to load
+ *  @param traitCollection The traits associated with the intended environment for the image.
+ *  @return The loaded image or nil
+ */
++ (UIImage *)as_imageNamed:(NSString *)imageName compatibleWithTraitCollection:(nullable UITraitCollection *)traitCollection;
 
 @end
 
+NS_ASSUME_NONNULL_END

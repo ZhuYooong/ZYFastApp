@@ -12,34 +12,34 @@ import PKHUD
 
 class NetDataManager: NSObject {
     static let shareNetDataManager = NetDataManager()
-    private override init() {}
+    fileprivate override init() {}
     let pageSize = 20
     //baseURL
     let V2EXBaseURL = "http://news-at.zhihu.com/api"
     //get方法
-    func GETRequest(URLString: URLStringConvertible, NetData: (data: NSData?)->Void) {
-        HUD.show(.LabeledProgress(title: "正在加载", subtitle: ""))
-        Alamofire.request(.GET, URLString).responseJSON {
+    func GETRequest(_ URLString: URLConvertible, NetData: @escaping (_ data: Data?)->Void) {
+        HUD.show(.labeledProgress(title: "正在加载", subtitle: ""))
+        Alamofire.request(URLString, method: .get).responseJSON {
             response in
             switch response.result {
-            case .Success:
-                NetData(data: response.data)
+            case .success:
+                NetData(response.data)
                 HUD.hide()
-            case .Failure( _):
-                HUD.show(.LabeledError(title: "连接服务器失败", subtitle: ""))
+            case .failure( _):
+                HUD.show(.labeledError(title: "连接服务器失败", subtitle: ""))
                 HUD.hide()
             }
         }
     }
 }
 extension NetDataManager {
-    func findLatestNews(NetData: (data: NSData?)->Void) {// 最新消息
+    func findLatestNews(_ NetData: @escaping (_ data: Data?)->Void) {// 最新消息
         GETRequest("\(V2EXBaseURL)/4/news/latest", NetData: NetData)
     }
-    func findHotNews(NetData: (data: NSData?)->Void) {// 热门消息
+    func findHotNews(_ NetData: @escaping (_ data: Data?)->Void) {// 热门消息
         GETRequest("\(V2EXBaseURL)/3/news/hot", NetData: NetData)
     }
-    func findSections(NetData: (data: NSData?)->Void) {// 栏目总览
+    func findSections(_ NetData: @escaping (_ data: Data?)->Void) {// 栏目总览
         GETRequest("\(V2EXBaseURL)/3/sections", NetData: NetData)
     }
 }

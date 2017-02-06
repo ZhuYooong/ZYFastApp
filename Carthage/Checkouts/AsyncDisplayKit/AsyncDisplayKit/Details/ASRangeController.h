@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
  * "working ranges" to trigger network calls and rendering, and is responsible for driving asynchronous layout of cells.
  * This includes cancelling those asynchronous operations as cells fall outside of the working ranges.
  */
-@interface ASRangeController : ASDealloc2MainObject <ASDataControllerDelegate>
+@interface ASRangeController : NSObject <ASDataControllerDelegate>
 {
   id<ASLayoutController>                  _layoutController;
   __weak id<ASRangeControllerDataSource>  _dataSource;
@@ -40,12 +40,18 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Notify the range controller that the visible range has been updated.
  * This is the primary input call that drives updating the working ranges, and triggering their actions.
- *
- * @param scrollDirection The current scroll direction of the scroll view.
+ * The ranges will be updated in the next turn of the main loop, or when -updateIfNeeded is called.
  *
  * @see [ASRangeControllerDelegate rangeControllerVisibleNodeIndexPaths:]
  */
-- (void)visibleNodeIndexPathsDidChangeWithScrollDirection:(ASScrollDirection)scrollDirection;
+- (void)setNeedsUpdate;
+
+/**
+ * Update the ranges immediately, if -setNeedsUpdate has been called since the last update.
+ * This is useful because the ranges must be updated immediately after a cell is added
+ * into a table/collection to satisfy interface state API guarantees.
+ */
+- (void)updateIfNeeded;
 
 /**
  * Add the sized node for `indexPath` as a subview of `contentView`.
@@ -63,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
 // These methods call the corresponding method on each node, visiting each one that
 // the range controller has set a non-default interface state on.
 - (void)clearContents;
-- (void)clearFetchedData;
+- (void)clearPreloadedData;
 
 /**
  * An object that describes the layout behavior of the ranged component (table view, collection view, etc.)
@@ -97,31 +103,38 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * @param rangeController Sender.
  *
- * @returns an array of index paths corresponding to the nodes currently visible onscreen (i.e., the visible range).
+ * @return an array of index paths corresponding to the nodes currently visible onscreen (i.e., the visible range).
  */
 - (NSArray<NSIndexPath *> *)visibleNodeIndexPathsForRangeController:(ASRangeController *)rangeController;
 
 /**
  * @param rangeController Sender.
  *
- * @returns the receiver's viewport size (i.e., the screen space occupied by the visible range).
+ * @return the current scroll direction of the view using this range controller.
+ */
+- (ASScrollDirection)scrollDirectionForRangeController:(ASRangeController *)rangeController;
+
+/**
+ * @param rangeController Sender.
+ *
+ * @return the receiver's viewport size (i.e., the screen space occupied by the visible range).
  */
 - (CGSize)viewportSizeForRangeController:(ASRangeController *)rangeController;
 
 /**
  * @param rangeController Sender.
  *
- * @returns the ASInterfaceState of the node that this controller is powering.  This allows nested range controllers
+ * @return the ASInterfaceState of the node that this controller is powering.  This allows nested range controllers
  * to collaborate with one another, as an outer controller may set bits in .interfaceState such as Visible.
  * If this controller is an orthogonally scrolling element, it waits until it is visible to preload outside the viewport.
  */
 - (ASInterfaceState)interfaceStateForRangeController:(ASRangeController *)rangeController;
 
-- (NSArray *)rangeController:(ASRangeController *)rangeController nodesAtIndexPaths:(NSArray *)indexPaths;
-
 - (ASDisplayNode *)rangeController:(ASRangeController *)rangeController nodeAtIndexPath:(NSIndexPath *)indexPath;
 
 - (NSArray<NSArray <ASCellNode *> *> *)completedNodes;
+
+- (NSString *)nameForRangeControllerDataSource;
 
 @end
 
@@ -145,13 +158,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @param completion Completion block.
  */
 - (void)rangeController:(ASRangeController * )rangeController didEndUpdatesAnimated:(BOOL)animated completion:(void (^)(BOOL))completion;
-
-/**
- * Completed updates to cell node addition and removal.
- *
- * @param rangeController Sender.
- */
-- (void)didCompleteUpdatesInRangeController:(ASRangeController *)rangeController;
 
 /**
  * Called for nodes insertion.

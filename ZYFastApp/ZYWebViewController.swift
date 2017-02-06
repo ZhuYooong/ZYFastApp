@@ -10,8 +10,8 @@ import UIKit
 import WebKit
 class ZYWebViewController: UIViewController {
     var httpURL: String?
-    let httpWebView = WKWebView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height+48))
-    let progressView = UIProgressView(frame: CGRectMake(0, 64, UIScreen.mainScreen().bounds.size.width, 30))
+    let httpWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height+48))
+    let progressView = UIProgressView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.bounds.size.width, height: 30))
     override func viewDidLoad() {
         super.viewDidLoad()
         initItem()
@@ -19,31 +19,31 @@ class ZYWebViewController: UIViewController {
     }
     //MARK: - 初始化界面
     func initItem() {
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         
         httpWebView.allowsBackForwardNavigationGestures = true
         view.addSubview(httpWebView)
         
         progressView.progress = 0.0
-        self.progressView.hidden = true
+        self.progressView.isHidden = true
         self.progressView.tintColor = UIColor(ZYCustomColor.darkCyanColor.rawValue)
         view.addSubview(progressView)
         
-        httpWebView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
+        httpWebView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
     }
     //MARK: - 加载数据
     func initData() {
-        var request = NSURLRequest()
+        var request: URLRequest?
         if let urlStr = httpURL {
-            if let url = NSURL(string: urlStr) where urlStr.length >= 6 && urlStr.substringWithRange(urlStr.rangeFromNSRange(NSMakeRange(0, 4))!) == "http" {
-                request = NSURLRequest(URL: url)
-            }else if let url = NSURL(string: "http://\(urlStr)") {
-                request = NSURLRequest(URL: url)
+            if let url = URL(string: urlStr) , urlStr.length >= 6 && urlStr.substring(with: urlStr.rangeFromNSRange(NSMakeRange(0, 4))!) == "http" {
+                request = URLRequest(url: url)
+            }else if let url = URL(string: "http://\(urlStr)") {
+                request = URLRequest(url: url)
             }
-            httpWebView.loadRequest(request)
+            httpWebView.load(request!)
         }
     }
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "loading" {
             
         }else if keyPath == "title" {
@@ -54,14 +54,14 @@ class ZYWebViewController: UIViewController {
             if object as? WKWebView == httpWebView  {
                 let progress = self.httpWebView.estimatedProgress
                 if progress == 1 {
-                    progressView.hidden = true
+                    progressView.isHidden = true
                     self.progressView.setProgress(0, animated: false)
                 }else {
-                    self.progressView.hidden = false
+                    self.progressView.isHidden = false
                     self.progressView.setProgress(Float(progress), animated: true)
                 }
             }else {
-                super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+                super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             }
         }
     }

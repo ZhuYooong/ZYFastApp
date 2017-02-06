@@ -18,15 +18,15 @@ class ZYSecondRootViewController: UIViewController {
         initData()
     }
     //MARK: - CollectionView 界面
-    var collectionView: ASCollectionView!
+    var collectionNode: ASCollectionNode!
     func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 1
         layout.minimumLineSpacing = 1
-        collectionView = ASCollectionView(frame: view.frame, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.whiteColor()
-        collectionView.asyncDataSource = self
-        view.addSubview(collectionView)
+        collectionNode = ASCollectionNode(frame: view.frame, collectionViewLayout: layout)
+        collectionNode.backgroundColor = UIColor.white
+        collectionNode.dataSource = self
+        view.addSubnode(collectionNode)
     }
     //MARK: - 数据加载
     var contentNewsArray = [HotNewsInfo]()
@@ -45,7 +45,7 @@ class ZYSecondRootViewController: UIViewController {
                         hotNewsInfo.url = subJson["url"].stringValue
                         self.contentNewsArray.append(hotNewsInfo)
                     }
-                    self.collectionView.reloadData()
+                    self.collectionNode.reloadData()
                 }
             }
         }
@@ -62,13 +62,13 @@ class ZYSecondRootViewController: UIViewController {
 }
 //MARK: - ASCollectionDataSource
 extension ZYSecondRootViewController: ASCollectionDataSource {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return contentNewsArray.count
     }
-    func collectionView(collectionView: ASCollectionView, nodeForItemAtIndexPath indexPath: NSIndexPath) -> ASCellNode {
-        return ZYSecondCollectionViewCellNode(hotNewsInfo: contentNewsArray[indexPath.row])
+    func collectionView(_ collectionView: ASCollectionView, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
+        return ZYSecondCollectionViewCellNode(hotNewsInfo: contentNewsArray[(indexPath as NSIndexPath).row])
     }
 }

@@ -10,11 +10,10 @@ import UIKit
 import SnapKit
 import Kingfisher
 import PKHUD
-import HexColor
 import SwiftyJSON
 
 class ViewController: UIViewController {
-    @IBOutlet weak var firstScrollView: UIView!
+    @IBOutlet weak var firstImageScrollView: UIView!
     @IBOutlet weak var firstTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,28 +28,28 @@ class ViewController: UIViewController {
     //MARK: ViewPager 页面
     var advertisementDefultImageView = UIImageView(image: UIImage(named: "first_defult_banner"))
     func creatDefultFirstScrollView() {
-        advertisementDefultImageView.userInteractionEnabled = true
-        advertisementDefultImageView.contentMode = .ScaleToFill
-        firstScrollView.addSubview(advertisementDefultImageView)
-        advertisementDefultImageView.snp_makeConstraints { (make) in
-            make.top.left.bottom.right.equalTo(firstScrollView)
+        advertisementDefultImageView.isUserInteractionEnabled = true
+        advertisementDefultImageView.contentMode = .scaleToFill
+        firstImageScrollView.addSubview(advertisementDefultImageView)
+        advertisementDefultImageView.snp.makeConstraints { (make) in
+            make.top.left.bottom.right.equalTo(firstImageScrollView)
         }
     }
     let advertisementScrollView = UIScrollView()
     var advertisementPageController = UIPageControl()
-    func creatFirstScrollViewWithArray(newsArray: [LatestNewsInfo]) {
+    func creatFirstScrollViewWithArray(_ newsArray: [LatestNewsInfo]) {
         if newsArray.count == 1 {
-            if let url = NSURL(string: newsArray[0].images!) {
-                advertisementDefultImageView.kf_setImageWithURL(url, placeholderImage: UIImage(named: "banner"))
+            if let url = URL(string: newsArray[0].images!) {
+                advertisementDefultImageView.kf.setImage(with:url, placeholder: UIImage(named: "banner"))
                 let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.defultImageViewTap(_:)))
                 advertisementDefultImageView.addGestureRecognizer(tap)
             }
             if let titleString = newsArray[0].title {
                 let advertisementTitleLabel = UILabel()
                 advertisementTitleLabel.text = titleString
-                advertisementTitleLabel.textColor = UIColor.whiteColor()
+                advertisementTitleLabel.textColor = UIColor.white
                 advertisementDefultImageView.addSubview(advertisementTitleLabel)
-                advertisementTitleLabel.snp_makeConstraints(closure: { (make) in
+                advertisementTitleLabel.snp.makeConstraints({ (make) in
                     make.left.bottom.equalTo(advertisementDefultImageView)
                     make.right.equalTo(advertisementDefultImageView).offset(-8)
                     make.height.equalTo(21)
@@ -59,51 +58,51 @@ class ViewController: UIViewController {
         }else if newsArray.count >= 2 {
             advertisementDefultImageView.removeFromSuperview()
             let headerView = UIView()
-            firstScrollView.addSubview(headerView)
+            firstImageScrollView.addSubview(headerView)
             let advertisementScrollView = UIScrollView()
             advertisementScrollView.delegate = self
-            advertisementScrollView.pagingEnabled = true
+            advertisementScrollView.isPagingEnabled = true
             advertisementScrollView.showsHorizontalScrollIndicator = false
-            firstScrollView.addSubview(advertisementScrollView)
-            advertisementScrollView.snp_makeConstraints { (make) in
-                make.top.left.bottom.right.equalTo(firstScrollView)
+            firstImageScrollView.addSubview(advertisementScrollView)
+            advertisementScrollView.snp.makeConstraints { (make) in
+                make.top.left.bottom.right.equalTo(firstImageScrollView)
             }
             for indexInt in 0 ..< newsArray.count {
                 let advertisementImageView = UIImageView(image: UIImage(named: "first_defult_banner"))
-                advertisementImageView.userInteractionEnabled = true
-                if let url = NSURL(string: newsArray[indexInt].images!) {
-                    advertisementImageView.kf_setImageWithURL(url, placeholderImage: UIImage(named: "first_defult_banner"))
+                advertisementImageView.isUserInteractionEnabled = true
+                if let url = URL(string: newsArray[indexInt].images!) {
+                    advertisementImageView.kf.setImage(with: url, placeholder: UIImage(named: "first_defult_banner"))
                 }
-                advertisementImageView.contentMode = .ScaleToFill
+                advertisementImageView.contentMode = .scaleToFill
                 let tap = UITapGestureRecognizer(target: self, action: #selector(ViewController.advertisementImageViewTap(_:)))
                 advertisementDefultImageView.addGestureRecognizer(tap)
                 advertisementScrollView.addSubview(advertisementImageView)
                 let xLoca = CGFloat(indexInt) * CGFloat(view.frame.size.width)
-                advertisementImageView.snp_makeConstraints(closure: { (make) in
+                advertisementImageView.snp.makeConstraints({ (make) in
                     make.top.height.width.equalTo(advertisementScrollView)
                     make.left.equalTo(advertisementScrollView).offset(xLoca)
                 })
                 if let titleString = newsArray[indexInt].title {
                     let advertisementTitleLabel = UILabel()
                     advertisementTitleLabel.text = titleString
-                    advertisementTitleLabel.textColor = UIColor.whiteColor()
+                    advertisementTitleLabel.textColor = UIColor.white
                     advertisementImageView.addSubview(advertisementTitleLabel)
-                    advertisementTitleLabel.snp_makeConstraints(closure: { (make) in
+                    advertisementTitleLabel.snp.makeConstraints({ (make) in
                         make.left.bottom.equalTo(advertisementImageView)
                         make.right.equalTo(advertisementImageView).offset(-8)
                         make.height.equalTo(21)
                     })
                 }
             }
-            advertisementScrollView.contentSize = CGSizeMake(CGFloat(newsArray.count) * view.frame.size.width, 0)
+            advertisementScrollView.contentSize = CGSize(width: CGFloat(newsArray.count) * view.frame.size.width, height: 0)
             //页面指示器
             advertisementPageController.currentPage = 0
             advertisementPageController.currentPageIndicatorTintColor = UIColor(ZYCustomColor.lightCyanColor.rawValue)
             advertisementPageController.numberOfPages = newsArray.count
             advertisementPageController.pageIndicatorTintColor = UIColor(ZYCustomColor.darkCyanColor.rawValue)
-            advertisementPageController.userInteractionEnabled = false
-            firstScrollView.addSubview(advertisementPageController)
-            advertisementPageController.snp_makeConstraints { (make) in
+            advertisementPageController.isUserInteractionEnabled = false
+            firstImageScrollView.addSubview(advertisementPageController)
+            advertisementPageController.snp.makeConstraints { (make) in
                 make.centerX.bottom.width.equalTo(advertisementScrollView)
                 make.height.equalTo(30)
             }
@@ -142,40 +141,40 @@ class ViewController: UIViewController {
         }
     }
     //MARK: - 页面跳转
-    func defultImageViewTap(recognizer: UITapGestureRecognizer) {//单个广告
+    func defultImageViewTap(_ recognizer: UITapGestureRecognizer) {//单个广告
         
     }
-    func advertisementImageViewTap(recognizer: UITapGestureRecognizer) {//多个广告
+    func advertisementImageViewTap(_ recognizer: UITapGestureRecognizer) {//多个广告
         
     }
 }
 //MARK: - ScrollView 代理
 extension ViewController: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         advertisementPageController.currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
     }
 }
 //MARK: - TableView 代理
 extension ViewController: UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contentNewsArray.count
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellID = "firstCellID"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! ZYFirstTableViewCell
-        if let titleString = contentNewsArray[indexPath.row].title, let url = NSURL(string: contentNewsArray[indexPath.row].images!) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! ZYFirstTableViewCell
+        if let titleString = contentNewsArray[(indexPath as NSIndexPath).row].title, let url = URL(string: contentNewsArray[(indexPath as NSIndexPath).row].images!) {
             cell.titleLabel?.text = titleString
-            cell.titleImageView?.kf_setImageWithURL(url, placeholderImage: UIImage(named: "first_defult_banner"))
+            cell.titleImageView?.kf.setImage(with: url, placeholder: UIImage(named: "first_defult_banner"))
         }
         return cell
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         return NSAttributedString(string: "暂无信息")
     }
 }

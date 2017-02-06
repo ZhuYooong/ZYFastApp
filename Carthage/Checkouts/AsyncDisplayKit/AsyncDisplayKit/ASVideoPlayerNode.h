@@ -19,19 +19,20 @@
 @class AVAsset;
 @protocol ASVideoPlayerNodeDelegate;
 
-typedef enum {
+typedef NS_ENUM(NSInteger, ASVideoPlayerNodeControlType) {
   ASVideoPlayerNodeControlTypePlaybackButton,
   ASVideoPlayerNodeControlTypeElapsedText,
   ASVideoPlayerNodeControlTypeDurationText,
   ASVideoPlayerNodeControlTypeScrubber,
+  ASVideoPlayerNodeControlTypeFullScreenButton,
   ASVideoPlayerNodeControlTypeFlexGrowSpacer,
-} ASVideoPlayerNodeControlType;
+};
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ASVideoPlayerNode : ASDisplayNode
 
-@property (nullable, atomic, weak) id<ASVideoPlayerNodeDelegate> delegate;
+@property (nullable, nonatomic, weak) id<ASVideoPlayerNodeDelegate> delegate;
 
 @property (nonatomic, assign, readonly) CMTime duration;
 
@@ -49,12 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readwrite) BOOL muted;
 @property (nonatomic, assign, readonly) ASVideoNodePlayerState playerState;
 @property (nonatomic, assign, readwrite) BOOL shouldAggressivelyRecoverFromStall;
-@property (nullable, atomic, strong, readwrite) NSURL *placeholderImageURL;
+@property (nullable, nonatomic, strong, readwrite) NSURL *placeholderImageURL;
+@property (nonatomic, strong, readonly) ASVideoNode *videoNode;
 
 //! Defaults to 100
 @property (nonatomic, assign) int32_t periodicTimeObserverTimescale;
 //! Defaults to AVLayerVideoGravityResizeAspect
-@property (atomic) NSString *gravity;
+@property (nonatomic, copy) NSString *gravity;
 
 - (instancetype)initWithUrl:(NSURL*)url;
 - (instancetype)initWithAsset:(AVAsset*)asset;
@@ -68,6 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)play;
 - (void)pause;
 - (BOOL)isPlaying;
+- (void)resetToPlaceholder;
 
 @end
 
@@ -119,9 +122,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Spinner delegate methods
 - (UIColor *)videoPlayerNodeSpinnerTint:(ASVideoPlayerNode *)videoPlayer;
+- (UIActivityIndicatorViewStyle)videoPlayerNodeSpinnerStyle:(ASVideoPlayerNode *)videoPlayer;
 
 #pragma mark - Playback button delegate methods
 - (UIColor *)videoPlayerNodePlaybackButtonTint:(ASVideoPlayerNode *)videoPlayer;
+
+#pragma mark - Fullscreen button delegate methods
+
+- (UIImage *)videoPlayerNodeFullScreenButtonImage:(ASVideoPlayerNode *)videoPlayer;
 
 
 #pragma mark ASVideoNodeDelegate proxy methods
@@ -130,6 +138,13 @@ NS_ASSUME_NONNULL_BEGIN
  * @param videoPlayerNode The ASVideoPlayerNode that was tapped.
  */
 - (void)didTapVideoPlayerNode:(ASVideoPlayerNode *)videoPlayer;
+
+/**
+ * @abstract Delegate method invoked when fullcreen button is taped.
+ * @param buttonNode The fullscreen button node that was tapped.
+ */
+- (void)didTapFullScreenButtonNode:(ASButtonNode *)buttonNode;
+
 /**
  * @abstract Delegate method invoked when ASVideoNode playback time is updated.
  * @param videoPlayerNode The video player node

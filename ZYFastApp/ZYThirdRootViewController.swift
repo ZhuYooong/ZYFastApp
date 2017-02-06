@@ -16,9 +16,9 @@ class ZYThirdRootViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "threeWebSegueID" {
-            let destinationViewController = segue.destinationViewController as? ZYWebViewController
+            let destinationViewController = segue.destination as? ZYWebViewController
             destinationViewController?.title = "简书"
             destinationViewController?.httpURL = "http://www.jianshu.com"
         }

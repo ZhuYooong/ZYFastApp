@@ -38,6 +38,8 @@
 
 #pragma mark - Lifecycle
 
+// -init is often called off the main thread in ASDK. Therefore it is imperative that no UIKit objects are accessed.
+// Examples of common errors include accessing the node’s view or creating a gesture recognizer.
 - (instancetype)init
 {
   _tableNode = [[ASTableNode alloc] init];
@@ -50,16 +52,18 @@
     _tableNode.dataSource = self;
     _tableNode.delegate = self;
     
-    _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
   }
   
   return self;
 }
 
-// do any ASDK view stuff in loadView
+// -loadView is guaranteed to be called on the main thread and is the appropriate place to
+// set up an UIKit objects you may be using.
 - (void)loadView
 {
   [super loadView];
+  
+  _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
   
   _photoFeed = [[PhotoFeedModel alloc] initWithPhotoFeedModelType:PhotoFeedModelTypePopular imageSize:[self imageSizeForScreenWidth]];
   [self refreshFeed];
@@ -90,7 +94,7 @@
     
     [_activityIndicatorView stopAnimating];
     
-    [self insertNewRowsInTableView:newPhotos];
+    [self insertNewRowsInTableNode:newPhotos];
 //    [self requestCommentsForPhotos:newPhotos];
     
     // immediately start second larger fetch
@@ -103,7 +107,7 @@
 {
   [_photoFeed requestPageWithCompletionBlock:^(NSArray *newPhotos){
     
-    [self insertNewRowsInTableView:newPhotos];
+    [self insertNewRowsInTableNode:newPhotos];
 //    [self requestCommentsForPhotos:newPhotos];
     if (context) {
       [context completeBatchFetching:YES];
@@ -129,7 +133,7 @@
 //  }
 //}
 
-- (void)insertNewRowsInTableView:(NSArray *)newPhotos
+- (void)insertNewRowsInTableNode:(NSArray *)newPhotos
 {
   NSInteger section = 0;
   NSMutableArray *indexPaths = [NSMutableArray array];
@@ -140,7 +144,7 @@
     [indexPaths addObject:path];
   }
   
-  [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+  [_tableNode insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -157,12 +161,12 @@
 
 #pragma mark - ASTableDataSource methods
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableNode:(ASTableNode *)tableNode numberOfRowsInSection:(NSInteger)section
 {
   return [_photoFeed numberOfItemsInFeed];
 }
 
-- (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath
+- (ASCellNodeBlock)tableNode:(ASTableNode *)tableNode nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   PhotoModel *photoModel = [_photoFeed objectAtIndex:indexPath.row];
   // this will be executed on a background thread - important to make sure it's thread safe
@@ -177,7 +181,7 @@
 #pragma mark - ASTableDelegate methods
 
 // Receive a message that the tableView is near the end of its data set and more data should be fetched if necessary.
-- (void)tableView:(ASTableView *)tableView willBeginBatchFetchWithContext:(ASBatchContext *)context
+- (void)tableNode:(ASTableNode *)tableNode willBeginBatchFetchWithContext:(ASBatchContext *)context
 {
   [context beginBatchFetching];
   [self loadPageWithContext:context];
@@ -188,7 +192,7 @@
 - (void)resetAllData
 {
   [_photoFeed clearFeed];
-  [_tableNode.view reloadData];
+  [_tableNode reloadData];
   [self refreshFeed];
 }
 
