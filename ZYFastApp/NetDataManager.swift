@@ -14,10 +14,8 @@ class NetDataManager: NSObject {
     static let shareNetDataManager = NetDataManager()
     fileprivate override init() {}
     let pageSize = 20
-    //baseURL
-    let V2EXBaseURL = "http://news-at.zhihu.com/api"
-    //get方法
-    func GETRequest(_ URLString: URLConvertible, NetData: @escaping (_ data: Data?)->Void) {
+    let V2EXBaseURL = "http://news-at.zhihu.com/api"//baseURL
+    func GETRequest(_ URLString: URLConvertible, NetData: @escaping (_ data: Data?)->Void) {//get方法
         HUD.show(.labeledProgress(title: "正在加载", subtitle: ""))
         Alamofire.request(URLString, method: .get).responseJSON {
             response in

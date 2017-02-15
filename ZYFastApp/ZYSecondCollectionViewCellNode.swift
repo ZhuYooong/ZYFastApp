@@ -38,8 +38,7 @@ class ZYSecondCollectionViewCellNode: ASCellNode {
         configureImageNode()
         configureCaptionNodes()
     }
-    //加载图片
-    func loadingIndicatorCenter() -> CGPoint {
+    func loadingIndicatorCenter() -> CGPoint {//加载图片
         let centerX = nodeSize.width / 2
         let centerY = nodeSize.height / 2 - captionContainerFrame().height / 2
         return CGPoint(x: centerX, y: centerY)
@@ -50,8 +49,7 @@ class ZYSecondCollectionViewCellNode: ASCellNode {
         view.addSubview(loadingIndicator)
         loadingIndicator.startAnimating()
     }
-    //imageNode
-    var imageNode = ASNetworkImageNode()
+    var imageNode = ASNetworkImageNode()//imageNode
     func configureImageNode() {
         imageNode.frame = viewFrame()
         imageNode.delegate = self
@@ -59,8 +57,7 @@ class ZYSecondCollectionViewCellNode: ASCellNode {
         imageNode.isLayerBacked = true
         addSubnode(imageNode)
     }
-    //标题栏
-    func configureCaptionNodes() {
+    func configureCaptionNodes() {//标题栏
         configureCaptionBlurView()
         configureCaptionContainerNode()
         configureCaptionLabelNode()
