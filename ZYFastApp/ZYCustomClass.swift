@@ -43,11 +43,11 @@ extension String {
     func textHeightWithFont(_ font: UIFont, constrainedToSize size:CGSize) -> CGFloat {
         var textSize:CGSize!
         if size.equalTo(CGSize.zero) {
-            let attributes = [NSFontAttributeName: font]
-            textSize = self.size(attributes: attributes)
+            let attributes = [NSAttributedStringKey.font: font]
+            textSize = self.size(withAttributes: attributes)
         } else {
             let option = NSStringDrawingOptions.usesLineFragmentOrigin
-            let attributes = [NSFontAttributeName: font]
+            let attributes = [NSAttributedStringKey.font: font]
             let stringRect = self.boundingRect(with: size, options: option, attributes: attributes, context: nil)
             textSize = stringRect.size
         }
@@ -71,17 +71,6 @@ extension UIColor {
         var alpha: CGFloat = 0
         self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return UIKit.UIColor(red: red, green: green, blue: blue, alpha: value)
-    }
-    public func mix(with color: UIColor, amount: Float) -> UIColor {
-        var comp1: [CGFloat] = Array(repeating: 0, count: 4);
-        self.getRed(&comp1[0], green: &comp1[1], blue: &comp1[2], alpha: &comp1[3])
-        var comp2: [CGFloat] = Array(repeating: 0, count: 4);
-        color.getRed(&comp2[0], green: &comp2[1], blue: &comp2[2], alpha: &comp2[3])
-        var comp: [CGFloat] = Array(repeating: 0, count: 4);
-        for i in 0...3 {
-            comp[i] = comp1[i] + (comp2[i] - comp1[i]) * CGFloat(amount)
-        }
-        return UIColor(red:comp[0], green: comp[1], blue: comp[2], alpha: comp[3])
     }
     private static func getColorComponents(_ value: Int) -> (red: CGFloat, green: CGFloat, blue: CGFloat) {
         let r = CGFloat(value >> 16 & 0xFF) / 255.0

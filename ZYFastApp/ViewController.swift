@@ -141,10 +141,10 @@ class ViewController: UIViewController {
         }
     }
     //MARK: - 页面跳转
-    func defultImageViewTap(_ recognizer: UITapGestureRecognizer) {//单个广告
+    @objc func defultImageViewTap(_ recognizer: UITapGestureRecognizer) {//单个广告
         
     }
-    func advertisementImageViewTap(_ recognizer: UITapGestureRecognizer) {//多个广告
+    @objc func advertisementImageViewTap(_ recognizer: UITapGestureRecognizer) {//多个广告
         
     }
 }

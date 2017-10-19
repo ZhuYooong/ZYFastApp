@@ -9,10 +9,10 @@
 import UIKit
 import RealmSwift
 class HotNewsInfo: Object {
-    dynamic var news_id: String? = ""
-    dynamic var url: String? = ""
-    dynamic var thumbnail: String? = ""
-    dynamic var title: String? = ""
+    @objc dynamic var news_id: String? = ""
+    @objc dynamic var url: String? = ""
+    @objc dynamic var thumbnail: String? = ""
+    @objc dynamic var title: String? = ""
     
     override class func primaryKey() -> String? {
         return "news_id"

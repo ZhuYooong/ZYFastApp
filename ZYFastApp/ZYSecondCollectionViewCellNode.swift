@@ -103,11 +103,11 @@ class AttributedTextNode: ASTextNode {
     func configure(_ text: String, size: CGFloat, color: UIColor = UIColor.white, textAlignment: NSTextAlignment = .left) {
         let mutableString = NSMutableAttributedString(string: text)
         let range = NSMakeRange(0, text.characters.count)
-        mutableString.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: size), range: range)
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
+        mutableString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: size), range: range)
+        mutableString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = textAlignment
-        mutableString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: range)
+        mutableString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: range)
         attributedText = mutableString
     }
 }

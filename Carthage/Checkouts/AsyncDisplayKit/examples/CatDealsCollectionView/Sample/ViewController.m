@@ -27,9 +27,8 @@ static const BOOL kSimulateWebResponse = YES;
 static const NSInteger kBatchSize = 20;
 
 static const CGFloat kHorizontalSectionPadding = 10.0f;
-static const CGFloat kVerticalSectionPadding = 20.0f;
 
-@interface ViewController () <ASCollectionDataSource, ASCollectionDelegate, ASCollectionViewDelegateFlowLayout>
+@interface ViewController () <ASCollectionDataSource, ASCollectionDelegate, ASCollectionDelegateFlowLayout>
 {
   ASCollectionNode *_collectionNode;
   NSMutableArray *_data;
@@ -203,27 +202,24 @@ static const CGFloat kVerticalSectionPadding = 20.0f;
   }];
 }
 
-#pragma mark - ASCollectionViewDelegateFlowLayout
+#pragma mark - ASCollectionDelegateFlowLayout
 
-- (UIEdgeInsets)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-  return UIEdgeInsetsMake(kVerticalSectionPadding, kHorizontalSectionPadding, kVerticalSectionPadding, kHorizontalSectionPadding);
-}
-
-- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+- (ASSizeRange)collectionNode:(ASCollectionNode *)collectionNode sizeRangeForHeaderInSection:(NSInteger)section
+{
   if (section == 0) {
-    CGFloat width = CGRectGetWidth(self.view.frame) - 2 * kHorizontalSectionPadding;
-    return CGSizeMake(width, [BlurbNode desiredHeightForWidth:width]);
+    return ASSizeRangeUnconstrained;
+  } else {
+    return ASSizeRangeZero;
   }
-  return CGSizeZero;
 }
 
-- (CGSize)collectionView:(ASCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+- (ASSizeRange)collectionNode:(ASCollectionNode *)collectionNode sizeRangeForFooterInSection:(NSInteger)section
+{
   if (section == 0) {
-    CGFloat width = CGRectGetWidth(self.view.frame);
-    return CGSizeMake(width, [LoadingNode desiredHeightForWidth:width]);
+    return ASSizeRangeUnconstrained;
+  } else {
+    return ASSizeRangeZero;
   }
-  return CGSizeZero;
 }
-
 
 @end

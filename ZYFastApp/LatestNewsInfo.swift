@@ -9,9 +9,9 @@
 import UIKit
 import RealmSwift
 class LatestNewsInfo: Object {
-    dynamic var id: String? = ""
-    dynamic var title: String? = ""
-    dynamic var images: String? = ""
+    @objc dynamic var id: String? = ""
+    @objc dynamic var title: String? = ""
+    @objc dynamic var images: String? = ""
     
     override class func primaryKey() -> String? {
         return "id"

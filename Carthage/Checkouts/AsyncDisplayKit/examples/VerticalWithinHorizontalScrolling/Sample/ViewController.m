@@ -39,7 +39,7 @@
   _pagerNode = [[ASPagerNode alloc] init];
   _pagerNode.dataSource = self;
   _pagerNode.delegate = self;
-  [ASRangeController setShouldShowRangeDebugOverlay:YES];
+  ASDisplayNode.shouldShowRangeDebugOverlay = YES;
   
   // Could implement ASCollectionDelegate if we wanted extra callbacks, like from UIScrollView.
   //_pagerNode.delegate = self;
@@ -77,9 +77,13 @@
   CGSize boundsSize = pagerNode.bounds.size;
   CGSize gradientRowSize = CGSizeMake(boundsSize.width, 100);
   GradientTableNode *node = [[GradientTableNode alloc] initWithElementSize:gradientRowSize];
-  node.style.preferredSize = boundsSize;
   node.pageNumber = index;
   return node;
+}
+
+- (ASSizeRange)pagerNode:(ASPagerNode *)pagerNode constrainedSizeForNodeAtIndex:(NSInteger)index;
+{
+  return ASSizeRangeMake(pagerNode.bounds.size);
 }
 
 - (NSInteger)numberOfPagesInPagerNode:(ASPagerNode *)pagerNode

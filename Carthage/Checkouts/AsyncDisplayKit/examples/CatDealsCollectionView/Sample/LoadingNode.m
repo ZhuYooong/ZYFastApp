@@ -24,8 +24,6 @@
 #import <AsyncDisplayKit/ASInsetLayoutSpec.h>
 #import <AsyncDisplayKit/ASCenterLayoutSpec.h>
 
-static CGFloat kFixedHeight = 200.0f;
-
 @interface LoadingNode ()
 {
   ASDisplayNode *_loadingSpinner;
@@ -38,10 +36,6 @@ static CGFloat kFixedHeight = 200.0f;
 
 #pragma mark -
 #pragma mark ASCellNode.
-
-+ (CGFloat)desiredHeightForWidth:(CGFloat)width {
-  return kFixedHeight;
-}
 
 - (instancetype)init
 {
@@ -59,10 +53,6 @@ static CGFloat kFixedHeight = 200.0f;
   [self addSubnode:_loadingSpinner];
   
   return self;
-}
-
-- (void)layout {
-  [super layout];
 }
 
 - (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
