@@ -113,30 +113,32 @@ class ViewController: UIViewController {
     func initData() {
         NetDataManager.shareNetDataManager.findLatestNews { (data) in
             if let data = data {
-                let json = JSON(data: data)
-                let rootDictionary = json.dictionaryValue
-                if let storiesJson = rootDictionary["stories"] {//tableView 数据
-                    self.contentNewsArray = [LatestNewsInfo]()
-                    for subJson in storiesJson.arrayValue {
-                        let newsInfo = LatestNewsInfo()
-                        newsInfo.id = subJson["id"].stringValue
-                        newsInfo.title = subJson["title"].stringValue
-                        newsInfo.images = subJson["images"][0].stringValue
-                        self.contentNewsArray.append(newsInfo)
+                do {
+                    let json = try JSON(data: data)
+                    let rootDictionary = json.dictionaryValue
+                    if let storiesJson = rootDictionary["stories"] {//tableView 数据
+                        self.contentNewsArray = [LatestNewsInfo]()
+                        for subJson in storiesJson.arrayValue {
+                            let newsInfo = LatestNewsInfo()
+                            newsInfo.id = subJson["id"].stringValue
+                            newsInfo.title = subJson["title"].stringValue
+                            newsInfo.images = subJson["images"][0].stringValue
+                            self.contentNewsArray.append(newsInfo)
+                        }
+                        self.firstTableView.reloadData()
                     }
-                    self.firstTableView.reloadData()
-                }
-                if let topStoriesJson = rootDictionary["top_stories"] {//ViewPager 数据
-                    var newsArray = [LatestNewsInfo]()
-                    for subJson in topStoriesJson.arrayValue {
-                        let newsInfo = LatestNewsInfo()
-                        newsInfo.id = subJson["id"].stringValue
-                        newsInfo.title = subJson["title"].stringValue
-                        newsInfo.images = subJson["image"].stringValue
-                        newsArray.append(newsInfo)
+                    if let topStoriesJson = rootDictionary["top_stories"] {//ViewPager 数据
+                        var newsArray = [LatestNewsInfo]()
+                        for subJson in topStoriesJson.arrayValue {
+                            let newsInfo = LatestNewsInfo()
+                            newsInfo.id = subJson["id"].stringValue
+                            newsInfo.title = subJson["title"].stringValue
+                            newsInfo.images = subJson["image"].stringValue
+                            newsArray.append(newsInfo)
+                        }
+                        self.creatFirstScrollViewWithArray(newsArray)
                     }
-                    self.creatFirstScrollViewWithArray(newsArray)
-                }
+                }catch(_) { }
             }
         }
     }

@@ -33,20 +33,22 @@ class ZYSecondRootViewController: UIViewController {
     func initData() {
         NetDataManager.shareNetDataManager.findHotNews { (data) in
             if let data = data {
-                let json = JSON(data: data)
-                let rootDictionary = json.dictionaryValue
-                if let recentJson = rootDictionary["recent"] {
-                    self.contentNewsArray = [HotNewsInfo]()
-                    for subJson in recentJson.arrayValue {
-                        let hotNewsInfo = HotNewsInfo()
-                        hotNewsInfo.news_id = subJson["news_id"].stringValue
-                        hotNewsInfo.thumbnail = subJson["thumbnail"].stringValue
-                        hotNewsInfo.title = subJson["title"].stringValue
-                        hotNewsInfo.url = subJson["url"].stringValue
-                        self.contentNewsArray.append(hotNewsInfo)
+                do {
+                    let json = try JSON(data: data)
+                    let rootDictionary = json.dictionaryValue
+                    if let recentJson = rootDictionary["recent"] {
+                        self.contentNewsArray = [HotNewsInfo]()
+                        for subJson in recentJson.arrayValue {
+                            let hotNewsInfo = HotNewsInfo()
+                            hotNewsInfo.news_id = subJson["news_id"].stringValue
+                            hotNewsInfo.thumbnail = subJson["thumbnail"].stringValue
+                            hotNewsInfo.title = subJson["title"].stringValue
+                            hotNewsInfo.url = subJson["url"].stringValue
+                            self.contentNewsArray.append(hotNewsInfo)
+                        }
+                        self.collectionNode.reloadData()
                     }
-                    self.collectionNode.reloadData()
-                }
+                }catch(_) { }
             }
         }
     }

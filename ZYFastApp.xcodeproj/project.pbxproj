@@ -13,22 +13,6 @@
 		040DE3D01D6190D9001EAF88 /* NetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040DE3CF1D6190D9001EAF88 /* NetDataManager.swift */; };
 		040DE3D61D61A51A001EAF88 /* ZYSecondRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040DE3D51D61A51A001EAF88 /* ZYSecondRootViewController.swift */; };
 		040DE3D81D61A531001EAF88 /* ZYThirdRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040DE3D71D61A531001EAF88 /* ZYThirdRootViewController.swift */; };
-		043594AE1E4818BA00D05AB6 /* AsyncDisplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0485D0FA1D641038004E0CE3 /* AsyncDisplayKit.framework */; };
-		043594AF1E4818BB00D05AB6 /* AsyncDisplayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0485D0FA1D641038004E0CE3 /* AsyncDisplayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		043594B11E481A1800D05AB6 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3D31D61A170001EAF88 /* PKHUD.framework */; };
-		043594B21E481A1800D05AB6 /* PKHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3D31D61A170001EAF88 /* PKHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		043594B31E481A1800D05AB6 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3AF1D6157E5001EAF88 /* Alamofire.framework */; };
-		043594B41E481A1800D05AB6 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3AF1D6157E5001EAF88 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		043594B51E481A1800D05AB6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3B11D6157E5001EAF88 /* Kingfisher.framework */; };
-		043594B61E481A1800D05AB6 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3B11D6157E5001EAF88 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		043594B71E481A1800D05AB6 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3B21D6157E5001EAF88 /* Realm.framework */; };
-		043594B81E481A1800D05AB6 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3B21D6157E5001EAF88 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		043594B91E481A1800D05AB6 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049185C71D62DAB200DDEFBE /* SwiftyJSON.framework */; };
-		043594BA1E481A1800D05AB6 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 049185C71D62DAB200DDEFBE /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		043594BB1E481A1800D05AB6 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3B31D6157E5001EAF88 /* RealmSwift.framework */; };
-		043594BC1E481A1800D05AB6 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3B31D6157E5001EAF88 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		043594BD1E481A1800D05AB6 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3B41D6157E5001EAF88 /* SnapKit.framework */; };
-		043594BE1E481A1800D05AB6 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 040DE3B41D6157E5001EAF88 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		044CE2571D5DB1A10032D2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CE2561D5DB1A10032D2E4 /* AppDelegate.swift */; };
 		044CE2591D5DB1A10032D2E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CE2581D5DB1A10032D2E4 /* ViewController.swift */; };
 		044CE25C1D5DB1A10032D2E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044CE25A1D5DB1A10032D2E4 /* Main.storyboard */; };
@@ -44,6 +28,7 @@
 		04BCEB1B1D630C4A00C2CC20 /* ZYFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BCEB1A1D630C4A00C2CC20 /* ZYFirstTableViewCell.swift */; };
 		04BCEB1D1D630FEB00C2CC20 /* ZYWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BCEB1C1D630FEB00C2CC20 /* ZYWebViewController.swift */; };
 		04DAEE071D61B9AF00CF47F2 /* LatestNewsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DAEE061D61B9AE00CF47F2 /* LatestNewsInfo.swift */; };
+		2988B839B99A1EA96BCC4011 /* Pods_ZYFastApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EC0090CC35E2871594A3FF /* Pods_ZYFastApp.framework */; };
 		DE705BE81F983B7A00FC7F4A /* ZYRefreshFoootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE705BE51F983B7A00FC7F4A /* ZYRefreshFoootView.swift */; };
 		DE705BE91F983B7A00FC7F4A /* ZYRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE705BE61F983B7A00FC7F4A /* ZYRefreshHeaderView.swift */; };
 		DE705BEA1F983B7A00FC7F4A /* ZYRefreshScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE705BE71F983B7A00FC7F4A /* ZYRefreshScrollViewExtension.swift */; };
@@ -73,14 +58,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				043594AF1E4818BB00D05AB6 /* AsyncDisplayKit.framework in Embed Frameworks */,
-				043594B41E481A1800D05AB6 /* Alamofire.framework in Embed Frameworks */,
-				043594BC1E481A1800D05AB6 /* RealmSwift.framework in Embed Frameworks */,
-				043594BA1E481A1800D05AB6 /* SwiftyJSON.framework in Embed Frameworks */,
-				043594B61E481A1800D05AB6 /* Kingfisher.framework in Embed Frameworks */,
-				043594B21E481A1800D05AB6 /* PKHUD.framework in Embed Frameworks */,
-				043594B81E481A1800D05AB6 /* Realm.framework in Embed Frameworks */,
-				043594BE1E481A1800D05AB6 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,11 +65,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		040DE3AF1D6157E5001EAF88 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		040DE3B11D6157E5001EAF88 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = ../Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
-		040DE3B21D6157E5001EAF88 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		040DE3B31D6157E5001EAF88 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		040DE3B41D6157E5001EAF88 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		040DE3BE1D6169A8001EAF88 /* ZYFastApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZYFastApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		040DE3C71D61718D001EAF88 /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		040DE3C81D61718D001EAF88 /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
@@ -100,7 +72,6 @@
 		040DE3CA1D61718D001EAF88 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		040DE3CD1D61721D001EAF88 /* ZYCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYCustomClass.swift; sourceTree = "<group>"; };
 		040DE3CF1D6190D9001EAF88 /* NetDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetDataManager.swift; sourceTree = "<group>"; };
-		040DE3D31D61A170001EAF88 /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = ../Carthage/Build/iOS/PKHUD.framework; sourceTree = "<group>"; };
 		040DE3D51D61A51A001EAF88 /* ZYSecondRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYSecondRootViewController.swift; sourceTree = "<group>"; };
 		040DE3D71D61A531001EAF88 /* ZYThirdRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYThirdRootViewController.swift; sourceTree = "<group>"; };
 		044CE2531D5DB1A00032D2E4 /* ZYFastApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZYFastApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,19 +87,20 @@
 		044CE2721D5DB1A40032D2E4 /* ZYFastAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZYFastAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		044CE2761D5DB1A40032D2E4 /* ZYFastAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZYFastAppUITests.swift; sourceTree = "<group>"; };
 		044CE2781D5DB1A40032D2E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0485D0FA1D641038004E0CE3 /* AsyncDisplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncDisplayKit.framework; path = ../Carthage/Build/iOS/AsyncDisplayKit.framework; sourceTree = "<group>"; };
 		0485D0FC1D6413D4004E0CE3 /* HotNewsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotNewsInfo.swift; sourceTree = "<group>"; };
 		0485D1011D6418B0004E0CE3 /* ZYSecondCollectionViewCellNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYSecondCollectionViewCellNode.swift; sourceTree = "<group>"; };
-		049185C71D62DAB200DDEFBE /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = ../Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		04B79BA91D87F04D005910CF /* ZYFourthTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYFourthTableViewController.swift; sourceTree = "<group>"; };
 		04B79BAC1D87F11C005910CF /* SettingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 		04B79BAE1D87F2F3005910CF /* SettingSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingSection.swift; sourceTree = "<group>"; };
 		04BCEB1A1D630C4A00C2CC20 /* ZYFirstTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYFirstTableViewCell.swift; sourceTree = "<group>"; };
 		04BCEB1C1D630FEB00C2CC20 /* ZYWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYWebViewController.swift; sourceTree = "<group>"; };
 		04DAEE061D61B9AE00CF47F2 /* LatestNewsInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestNewsInfo.swift; sourceTree = "<group>"; };
+		49EC0090CC35E2871594A3FF /* Pods_ZYFastApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZYFastApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		536DA16C0396EA65985C3B07 /* Pods-ZYFastApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYFastApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZYFastApp/Pods-ZYFastApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DE705BE51F983B7A00FC7F4A /* ZYRefreshFoootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYRefreshFoootView.swift; sourceTree = "<group>"; };
 		DE705BE61F983B7A00FC7F4A /* ZYRefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYRefreshHeaderView.swift; sourceTree = "<group>"; };
 		DE705BE71F983B7A00FC7F4A /* ZYRefreshScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZYRefreshScrollViewExtension.swift; sourceTree = "<group>"; };
+		F77A74B202EA04B2ED06F677 /* Pods-ZYFastApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZYFastApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZYFastApp/Pods-ZYFastApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,14 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				043594AE1E4818BA00D05AB6 /* AsyncDisplayKit.framework in Frameworks */,
-				043594B31E481A1800D05AB6 /* Alamofire.framework in Frameworks */,
-				043594BB1E481A1800D05AB6 /* RealmSwift.framework in Frameworks */,
-				043594B91E481A1800D05AB6 /* SwiftyJSON.framework in Frameworks */,
-				043594B51E481A1800D05AB6 /* Kingfisher.framework in Frameworks */,
-				043594B11E481A1800D05AB6 /* PKHUD.framework in Frameworks */,
-				043594B71E481A1800D05AB6 /* Realm.framework in Frameworks */,
-				043594BD1E481A1800D05AB6 /* SnapKit.framework in Frameworks */,
+				2988B839B99A1EA96BCC4011 /* Pods_ZYFastApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,18 +145,10 @@
 			isa = PBXGroup;
 			children = (
 				DE705BE41F983B7A00FC7F4A /* ZYRefresh */,
-				0485D0FA1D641038004E0CE3 /* AsyncDisplayKit.framework */,
 				040DE3C71D61718D001EAF88 /* UINavigationController+FDFullscreenPopGesture.h */,
 				040DE3C81D61718D001EAF88 /* UINavigationController+FDFullscreenPopGesture.m */,
 				040DE3C91D61718D001EAF88 /* UIScrollView+EmptyDataSet.h */,
 				040DE3CA1D61718D001EAF88 /* UIScrollView+EmptyDataSet.m */,
-				040DE3D31D61A170001EAF88 /* PKHUD.framework */,
-				040DE3AF1D6157E5001EAF88 /* Alamofire.framework */,
-				040DE3B11D6157E5001EAF88 /* Kingfisher.framework */,
-				040DE3B21D6157E5001EAF88 /* Realm.framework */,
-				049185C71D62DAB200DDEFBE /* SwiftyJSON.framework */,
-				040DE3B31D6157E5001EAF88 /* RealmSwift.framework */,
-				040DE3B41D6157E5001EAF88 /* SnapKit.framework */,
 			);
 			name = ThirdPart;
 			sourceTree = "<group>";
@@ -241,6 +198,8 @@
 				044CE26A1D5DB1A30032D2E4 /* ZYFastAppTests */,
 				044CE2751D5DB1A40032D2E4 /* ZYFastAppUITests */,
 				044CE2541D5DB1A00032D2E4 /* Products */,
+				4C40AD0398C2BB675FF09C15 /* Pods */,
+				CF0930089035FD227C0700F7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -329,6 +288,23 @@
 			name = SettingView;
 			sourceTree = "<group>";
 		};
+		4C40AD0398C2BB675FF09C15 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				536DA16C0396EA65985C3B07 /* Pods-ZYFastApp.debug.xcconfig */,
+				F77A74B202EA04B2ED06F677 /* Pods-ZYFastApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CF0930089035FD227C0700F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49EC0090CC35E2871594A3FF /* Pods_ZYFastApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DE705BE41F983B7A00FC7F4A /* ZYRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,11 +322,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 044CE27B1D5DB1A40032D2E4 /* Build configuration list for PBXNativeTarget "ZYFastApp" */;
 			buildPhases = (
+				431098C87E58CD0EF02A3BA5 /* [CP] Check Pods Manifest.lock */,
 				044CE24F1D5DB1A00032D2E4 /* Sources */,
 				044CE2501D5DB1A00032D2E4 /* Frameworks */,
 				044CE2511D5DB1A00032D2E4 /* Resources */,
 				040DE3BB1D61581D001EAF88 /* ShellScript */,
 				043594B01E4818BB00D05AB6 /* Embed Frameworks */,
+				E3B255B196399F4AF48DC864 /* [CP] Embed Pods Frameworks */,
+				CBD2BC3FFFCF3F712FD64E41 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -492,6 +471,77 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		431098C87E58CD0EF02A3BA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZYFastApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBD2BC3FFFCF3F712FD64E41 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZYFastApp/Pods-ZYFastApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3B255B196399F4AF48DC864 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ZYFastApp/Pods-ZYFastApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AsyncDisplayKit/AsyncDisplayKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZYFastApp/Pods-ZYFastApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -675,14 +725,12 @@
 		};
 		044CE27C1D5DB1A40032D2E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 536DA16C0396EA65985C3B07 /* Pods-ZYFastApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 94Y4S9DSKK;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ZYFastApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TongBuWeiYe.ZYFastApp;
@@ -696,14 +744,12 @@
 		};
 		044CE27D1D5DB1A40032D2E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F77A74B202EA04B2ED06F677 /* Pods-ZYFastApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 94Y4S9DSKK;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ZYFastApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TongBuWeiYe.ZYFastApp;
